@@ -14,21 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('images', function (Blueprint $table) {
-
             $table->id();
-
             $table->foreignId('shop_id')->constrained()->onDelete("cascade");
-
             $table->enum("type" , ["banner","normal"])->nullable();
-
-            $table->enum("position" , ["top","mid","bot"])->nullable();
-
-            $table->string("image_src");
-
+            $table->enum("position" , ["top","mid","bot_right","bot_left"])->nullable();
+            $table->string("image_name");
             $table->string("image_alt");
-
+            $table->softDeletes();
             $table->timestamps();
-            
         });
     }
 

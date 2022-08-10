@@ -14,17 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('guilds', function (Blueprint $table) {
-
             $table->id();
-
-            $table->string("name");
-
-            $table->string("slug");
-
+            $table->string("name")->unique();
+            $table->string("slug")->unique();
             $table->string("image");
-
+            $table->boolean('show_status')->default(0);
             $table->timestamps();
-
         });
     }
 

@@ -15,14 +15,10 @@ return new class extends Migration
     {
         Schema::create('shop_social', function (Blueprint $table) {
 
-            $table->id();
+            $table->foreignId('shop_id')->constrained()->onDelete("cascade");
+            $table->foreignId('social_id')->constrained()->onDelete("cascade");
+            $table->string("link");
 
-            $table->foreignId('shop_id')->constrained();
-
-            $table->foreignId('social_id')->constrained();
-
-            $table->timestamps();
-            
         });
     }
 
